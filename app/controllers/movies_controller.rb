@@ -12,8 +12,11 @@ class MoviesController < ApplicationController
 
 
 
-  # def search
-  #   @query = params[]
-  # end
-
+  def search
+    if params[:query].present?
+      @movies = TmdbService.search_movies(params[:query])
+    else
+      @movies = []
+    end
+  end
 end

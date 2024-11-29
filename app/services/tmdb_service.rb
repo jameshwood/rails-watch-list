@@ -31,11 +31,18 @@ class TmdbService
     JSON.parse(response.read_body)
   end
 
+  def self.search_movies(title)
+    url = URI("https://api.themoviedb.org/3/search/movie?query=#{title}&include_adult=false&language=en-US&page=1")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
 
+    request = Net::HTTP::Get.new(url)
+    request["accept"] = 'application/json'
+    request["Authorization"] = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YzA1MjM1MWM0MmY0NGY3YzE5NDZhYmUzOTJjNzlmMyIsIm5iZiI6MTczMjY0NTY2Ni40ODQ1MjQzLCJzdWIiOiI2NzM4Y2IxZTM1ZjFlNmQxN2QyZWFkNjIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.0QUNUF86RAcGebiNo3v22kAFVOiovwkc1OR1z_Hfei0'
 
-  # def self.search_movies(query)
-  #   url = "#{BASE_URL}/search/movie?api_key=#{API_KEY}&query=#{URI.encode(query)}"
-  #   response = URI.open(url).read
-  #   JSON.parse(response)['results']
-  # end
+    response = http.request(request)
+    json_response = JSON.parse(response.read_body)
+    json_response['results']
+  end
+
 end
