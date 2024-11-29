@@ -1,0 +1,15 @@
+<h1 class="text-center my-4">All Lists</h1>
+
+<!-- Create New List Button -->
+<div class="text-center mb-4">
+  <%= link_to "Create New List", new_list_path, class: "btn btn-success btn-lg" %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <%= render partial: "shared/list_card", locals: { list: list } %>
+    <% end %>
+  </div>
+</div>
+

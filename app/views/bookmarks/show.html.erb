@@ -1,0 +1,26 @@
+<h1 class="text-center my-4">Choose a List</h1>
+
+<!-- Create New List Button -->
+<div class="text-center mb-4">
+  <%= link_to "Create New List", new_list_path, class: "btn btn-success btn-lg" %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= list.name %></h5>
+            <p class="card-text">This list has <%= list.bookmarks.count %> bookmarks.</p>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "Add to This List", new_list_bookmark_path(list_id: list.id, movie_id: params['id']),
+                method: :post,
+                class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.movie-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 450px;
+  max-height: 100%;
+
+  .card-img-top {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-body {
+    // Align content within the card
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .card-footer {
+    background-color: #f8f9fa;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

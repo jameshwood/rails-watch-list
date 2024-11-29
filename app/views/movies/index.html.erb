@@ -1,0 +1,13 @@
+<div class="container my-5">
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <div class="col-md-4 mb-4 h-100">
+        <%= render partial: 'shared/movie_card', locals: {
+          image_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}",
+          title: movie['title'],
+          movie_id: movie['id'] # Pass the movie_id to the partial
+        } %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="col-md-6 mb-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= list.name %></h5>
+
+      <!-- Carousel -->
+      <div id="carousel-<%= list.id %>" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% list.movies.each_with_index do |movie, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <img src="<%= movie.poster_url %>" class="d-block w-100" alt="<%= movie.title %> poster">
+              <div class="carousel-caption d-none d-md-block">
+                <h5><%= movie.title %></h5>
+                <p><%= truncate(movie.overview, length: 100) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= list.id %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= list.id %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!-- End of Carousel -->
+    </div>
+    <div class="card-footer text-center">
+      <%= link_to "View List", list_path(list), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

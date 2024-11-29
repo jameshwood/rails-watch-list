@@ -1,0 +1,11 @@
+<div class="card movie-card h-100" data-movie-id="<%= movie_id %>">
+  <img src="<%= image_url %>" class="card-img-top" alt="<%= title %> poster">
+  <div class="card-body">
+    <h5 class="card-title"><%= title %></h5>
+    <!-- Add any other movie details here -->
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+    <%= link_to "More details", movie_path(id: movie_id), class: "btn btn-primary btn-sm" %>
+    <%= link_to "Add to Watchlist", bookmarks_path(id: movie_id), class: "btn btn-secondary btn-sm" %>
+  </div>
+</div>

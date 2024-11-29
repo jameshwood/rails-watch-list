@@ -7,4 +7,21 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'movies#index'
+
+  resources :movies, only: [:index, :show] do
+    collection do
+      get :search # For searching movies
+    end
+  end
+
+  get 'bookmarks', to: "bookmarks#show"
+
+  delete '/bookmarks/:id', to: 'bookmarks#destroy', as: 'delete'
+
+
+  resources :lists, only: [:index, :show, :new, :create, :destroy] do
+    resources :bookmarks, only: [:new, :create] # Nested under lists
+  end
+
 end

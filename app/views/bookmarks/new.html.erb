@@ -1,0 +1,39 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <!-- Movie Card -->
+    <div class="col-md-4">
+      <div class="card h-100 mb-4">
+        <div class="card-header">
+          Adding to List: <strong><%= @list.name %></strong>
+        </div>
+        <div class="card-body">
+          <%= render partial: 'shared/movie_card', locals: {
+            image_url: "https://image.tmdb.org/t/p/w500#{@movie['poster_path']}",
+            title: @movie['title'],
+            movie_id: @movie['id'] # Pass the movie_id to the partial
+          } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bookmark Form -->
+    <div class="col-md-6">
+      <div class="card h-100 mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Add Your Comment</h5>
+          <%= simple_form_for @bookmark, url: list_bookmarks_path(@list), method: :post do |f| %>
+            <div class="mb-3">
+              <%= f.input :comment, label: "Comment", placeholder: "Add your comment about the movie here", required: true %>
+            </div>
+
+            <%= f.hidden_field :movie_id, value: params['movie_id']%> <!-- Hidden field to pass the movie ID -->
+
+            <div class="text-center">
+              <%= f.submit "Add Bookmark", class: "btn btn-primary btn-lg"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

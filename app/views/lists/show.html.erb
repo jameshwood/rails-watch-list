@@ -1,0 +1,17 @@
+<h1 class="text-center my-4"><%= @list.name %></h1>
+
+<div class="container">
+  <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="col-md-4 mb-4">
+        <%= render partial: 'shared/bookmark_card', locals: {
+          image_url: "https://image.tmdb.org/t/p/w500#{bookmark.movie.poster_url}",
+          title: bookmark.movie.title,
+          comment: bookmark.comment,
+          list_id: @list.id,
+          bookmark_id: bookmark.id
+        } %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <div class="row">
+    <!-- Movie Poster -->
+    <div class="col-md-4">
+      <img src="https://image.tmdb.org/t/p/w500<%= @movie['poster_path'] %>" class="img-fluid rounded" alt="<%= @movie['title'] %> poster">
+    </div>
+
+    <!-- Movie Details -->
+    <div class="col-md-8">
+      <h1><%= @movie['title'] %></h1>
+      <p class="text-muted"><strong>Tagline:</strong> <%= @movie['tagline'] %></p>
+      <p><strong>Overview:</strong> <%= @movie['overview'] %></p>
+
+      <ul class="list-group my-3">
+        <li class="list-group-item"><strong>Genres:</strong>
+          <% @movie['genres'].each do |genre| %>
+            <span class="badge bg-primary"><%= genre['name'] %></span>
+          <% end %>
+        </li>
+        <li class="list-group-item"><strong>Release Date:</strong> <%= @movie['release_date'] %></li>
+        <li class="list-group-item"><strong>Runtime:</strong> <%= @movie['runtime'] %> mins</li>
+        <li class="list-group-item"><strong>Rating:</strong> <%= @movie['vote_average'] %>/10 (from <%= @movie['vote_count'] %> votes)</li>
+      </ul>
+
+      <div class="mt-4">
+        <a href="<%= @movie['homepage'] %>" class="btn btn-info" target="_blank">Official Website</a>
+        <%= link_to "Add to Watchlist", bookmarks_path(id: @movie['id']), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,10 @@
+<div class="card movie-card h-100">
+  <img src="<%= image_url %>" class="card-img-top" alt="<%= title %> poster">
+  <div class="card-body">
+    <h5 class="card-title"><%= title %></h5>
+    <p class="card-text"><%= comment %></p>
+  </div>
+  <div class="card-footer text-center">
+    <%= link_to "Remove from Watchlist", delete_path(bookmark_id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+  </div>
+</div>
