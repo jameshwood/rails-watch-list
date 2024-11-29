@@ -9,10 +9,6 @@
           <% list.movies.each_with_index do |movie, index| %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
               <img src="<%= movie.poster_url %>" class="d-block w-100" alt="<%= movie.title %> poster">
-              <div class="carousel-caption d-none d-md-block">
-                <h5><%= movie.title %></h5>
-                <p><%= truncate(movie.overview, length: 100) %></p>
-              </div>
             </div>
           <% end %>
         </div>

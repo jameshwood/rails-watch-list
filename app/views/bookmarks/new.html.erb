@@ -24,6 +24,7 @@
           <%= simple_form_for @bookmark, url: list_bookmarks_path(@list), method: :post do |f| %>
             <div class="mb-3">
               <%= f.input :comment, label: "Comment", placeholder: "Add your comment about the movie here", required: true %>
+              <%= f.input :photo, as: :file %>
             </div>
 
             <%= f.hidden_field :movie_id, value: params['movie_id']%> <!-- Hidden field to pass the movie ID -->
